@@ -19,7 +19,7 @@ app.add_middleware(
 async def chat(req: Request):
     data = await req.json()
     user_message = data.get("message")
-    result = await Runner.run(my_agent, user_message, run_config=config)
+    result = await Runner.run(my_agent, user_message, run_config=config, max_turns=20)
     return {"reply": result.final_output}
 
 
