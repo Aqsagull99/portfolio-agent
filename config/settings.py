@@ -5,17 +5,17 @@ from agents.run import RunConfig
 
 load_dotenv()
 
-api_key = os.getenv("OPENROUTER_API_KEY")
-if not api_key:
-    raise ValueError("OPENROUTER_API_KEY is missing")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY is missing")
 
 external_client = AsyncOpenAI(
-    api_key=api_key,
-    base_url="https://openrouter.ai/api/v1",
+    api_key=GROQ_API_KEY,
+    base_url="https://api.groq.com/openai/v1",
 )
 
 model = OpenAIChatCompletionsModel(
-    model="liquid/lfm-2.5-1.2b-instruct:free",
+    model="llama-3.3-70b-versatile",
     openai_client=external_client,
 )
 
